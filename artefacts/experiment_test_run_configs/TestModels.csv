@@ -1,0 +1,16 @@
+expt_n,environment,environment_info,data_file,model_file,version_prefix,test_info,test_cases,test_rounds,results_folder,test_file,train_sample_rate,test_sample_rate
+0,SS,Simulated Dasic 2006 - simple (NT) state - NBD,data\Simulated_Dasic_2006_Tool_Wear_Model_Train.csv,models/RF_Model_Dasic_NoNBD.mdl,Dasic_SS_NT,Separate test set.,40,5,results/09-Jun-2023,data\Simulated_Dasic_2006_Tool_Wear_Model_Test.csv,1,2
+1,SS,Simulated Dasic 2006 - simple (NT) state - LBD,data\Simulated_Dasic_2006_Tool_Wear_Model_Train.csv,models/RF_Model_Dasic_LowNBD.mdl,Dasic_SS_NT,Separate test set.,40,5,results/09-Jun-2023,data\Simulated_Dasic_2006_Tool_Wear_Model_Test.csv,1,2
+2,SS,Simulated Dasic 2006 - simple (NT) state - HBD,data\Simulated_Dasic_2006_Tool_Wear_Model_Train.csv,models/RF_Model_Dasic_HighNBD.mdl,Dasic_SS_NT,Separate test set.,40,5,results/09-Jun-2023,data\Simulated_Dasic_2006_Tool_Wear_Model_Test.csv,1,2
+3,SS,PHM C01 simple (NT) NBD,data\PHM_Tool_Wear_Data_C01_0p12.csv,models/RF_Model_PHM_C01_SS_NoNBD.mdl,PHM_C01_SS_NT,Separate test set.,40,5,results/09-Jun-2023,,100,70
+4,SS,PHM C01 simple (NT) LBD,data\PHM_Tool_Wear_Data_C01_0p12.csv,models/RF_Model_PHM_C01_SS_LowNBD.mdl,PHM_C01_SS_NT,Separate test set.,40,5,results/09-Jun-2023,,100,70
+5,SS,PHM C01 simple (NT) HBD,data\PHM_Tool_Wear_Data_C01_0p12.csv,models/RF_Model_PHM_C01_SS_HighNBD.mdl,PHM_C01_SS_NT,Separate test set.,40,5,results/09-Jun-2023,,100,70
+6,SS,PHM C04 simple (NT) NBD,data\PHM_Tool_Wear_Data_C04_0p098.csv,models/RF_Model_PHM_C04_SS_NoNBD.mdl,PHM_C04_SS_NT,Separate test set.,40,5,results/09-Jun-2023,,100,70
+7,SS,PHM C04 simple (NT) LBD,data\PHM_Tool_Wear_Data_C04_0p098.csv,models/RF_Model_PHM_C04_SS_LowNBD.mdl,PHM_C04_SS_NT,Separate test set.,40,5,results/09-Jun-2023,,100,70
+8,SS,PHM C04 simple (NT) HBD,data\PHM_Tool_Wear_Data_C04_0p098.csv,models/RF_Model_PHM_C04_SS_HighNBD.mdl,PHM_C04_SS_NT,Separate test set.,40,5,results/09-Jun-2023,,100,70
+9,SS,PHM C06 simple (NT) NBD,data\PHM_Tool_Wear_Data_C06_0p13.csv,models/RF_Model_PHM_C06_SS_NoNBD.mdl,PHM_C06_SS_NT,Separate test set.,40,5,results/09-Jun-2023,,100,70
+10,SS,PHM C06 simple (NT) LBD,data\PHM_Tool_Wear_Data_C06_0p13.csv,models/RF_Model_PHM_C06_SS_LowNBD.mdl,PHM_C06_SS_NT,Separate test set.,40,5,results/09-Jun-2023,,100,70
+11,SS,PHM C06 simple (NT) HBD,data\PHM_Tool_Wear_Data_C06_0p13.csv,models/RF_Model_PHM_C06_SS_HighNBD.mdl,PHM_C06_SS_NT,Separate test set.,40,5,results/09-Jun-2023,,100,70
+12,MS,PHM C01 complex multi-variate state NBD,data\PHM_Tool_Wear_Data_C01_0p12.csv,models/RF_Model_PHM_C01_MS_NoNBD.mdl,PHM_C01_MS,Separate test set.,40,5,results/09-Jun-2023,,100,70
+13,MS,PHM C04 complex multi-variate state NBD,data\PHM_Tool_Wear_Data_C04_0p098.csv,models/RF_Model_PHM_C04_MS_NoNBD.mdl,PHM_C04_MS,Separate test set.,40,5,results/09-Jun-2023,,100,70
+14,MS,PHM C06 complex multi-variate state NBD,data\PHM_Tool_Wear_Data_C06_0p13.csv,models/RF_Model_PHM_C06_MS_NoNBD.mdl,PHM_C06_MS,Separate test set.,40,5,results/09-Jun-2023,,100,70

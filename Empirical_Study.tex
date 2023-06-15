@@ -1,0 +1,151 @@
+%% (2) Build options: PdfLaTex + BibTex
+
+\documentclass[]{article}
+\usepackage[round]{natbib}
+\bibliographystyle{plainnat}
+
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsfonts}
+\usepackage{setspace}
+\usepackage[spaces, hyphens]{url}
+\usepackage[colorlinks, allcolors=blue]{hyperref} 
+
+%opening
+\title{An empirical study of the na\"ive REINFORCE algorithm for predictive maintenance of industrial machines}
+\author{Rajesh Siraskar}
+
+\onehalfspacing
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+``Occam`s razor is a principle often attributed to 14th century friar William of Ockham that says that if you have two competing ideas to explain the same phenomenon, you should prefer the simpler one`` - Chris Simms (NewScientist, ). Everything should be made as simple as possible, but not simpler. -- Albert Enstien 
+
+Our broad goal is to understand the performance of REINFORCE, a na\"ive reinforce algorithm algorithm with pitched against the more advanced algorithms, specifically the DQN, A2C and PPO. 
+
+Our approach uses simulated as well as real data. Simple as well as complex env. Without as well as with noise. Our systematic analysis and study show that the na\"ive REINFORCE implementation out performs these algorithms by xx, xx, and xx respectively. The variance as measured by std. dev is xx, xx, xx
+\end{abstract}
+
+\section{Introduction}
+Introduced in 1992, the REINFORCE algorithm is considered as a basic reinforcement learning algorithm. It is a policy-based, on-policy as well as off-policy algorithm, capable of handling both discrete and continuous observation and action domains.
+
+In practice the REINFORCE algorithm is considered as ``weak" learner and superseded by several algorithms developed since. Most notably the Q-Learning and its deep-neural network version, the DQN, followed by Actor-Critic and one of the most robust modern day algorithms, the PPO. 
+
+\href{https://www.ri.cmu.edu/pub_files/2013/7/Kober_IJRR_2013.pdf}{Reinforcement Learning in Robotics: A Survey}  - Jens Kober J. Andrew Bagnell Jan Peters -   
+Initial gradient-based approaches such as finite differences gradients or REINFORCE
+(Williams, 1992) have been rather slow. The weight perturbation algorithm is related to
+REINFORCE but can deal with non-Gaussian distributions which significantly improves
+the signal to noise ratio of the gradient (Roberts et al., 2010). Recent natural policy
+gradient approaches (Peters and Schaal, 2008c,b) have allowed for faster convergence
+which may be advantageous for robotics as it reduces the learning time and required
+real-world interactions.
+
+
+xxx \par
+xxx \par
+xxx \par
+xxx \par
+xxx \par
+
+\subsection{Algorithm timelines}
+\begin{itemize}
+	\item 1947: Monte Carlo Sampling
+	\item 1959: Temporal Difference Learning
+	\item 1989: Q-Learning
+	\item 1992: REINFORCE
+	\item 2013: DQN
+	\item 2016: A3C
+	\item 2017: PPO 
+\end{itemize}
+
+\section{The REINFORCE algorithm}
+Three key features of any RL algorithm:
+\begin{enumerate}
+	\item Policy: $\pi_\theta$ = Probablities of all actions, given a state. Parameterized by $\theta$
+	\item Objective function:
+	\begin{equation}
+		\max_{\theta} J(\pi_{\theta}) = \mathop{\mathbb{E}}_{\tau \sim \pi_\theta} [R(\tau)]
+	\end{equation}
+	\item Method: Way to udate the parameters = Policy Gradient
+
+\end{enumerate}
+
+\subsection{Policy gradient numerical computation}
+
+\begin{enumerate}
+	\item Plain vanilla: 
+	\begin{equation}
+		\nabla \theta J(\pi_\theta) = \mathbb{E}_{\tau \sim \pi_\theta} \; [ \; \sum_{t=0}^T R_t(\tau) \; \nabla_\theta \ln \pi_\theta(a_t \vert s_t) \;]
+	\end{equation}
+	\item With Monte Carlo sampling and approximation: $\nabla_\theta J(\pi_\theta) \approx [ \; \sum_{t=0}^T R_t(\tau) \; \nabla_\theta \ln \pi_\theta(a_t \vert s_t) \;]$
+	\item With baseline: $\nabla_\theta J(\theta) \approx [ \; \sum_{t=0}^T (R_t(\tau) - b(s_t)) \; \nabla_\theta \ln \pi_\theta(a_t \vert s_t) \;]$
+	\item Where, baseline does not change per time-step, it is for the entire trajectory
+	\item One baseline option: $V^\pi$ - leads to Actor-Critic algorithm
+	\item Simpler option: Average returns over trajectory: $b = \frac{1}{T}\sum_{t=0}^T R_t(\tau) $
+\end{enumerate}
+
+Algorithm
+%1. Initialize $\alpha$, $\gamma$ and $\theta$ i.e. weigths of the NN
+%2. for episodes = 0 to MAX_EPISODES:
+%- sample trajectory $\tau$
+%- set $\nabla_\theta J(\pi_{\theta})$ = 0
+%- for t=0 to T:
+%- $R_t(\tau) = \sum_{t'=t}^{T} \gamma^{t'-t} r'_t$
+%- $\nabla_\theta J(\pi_\theta)  = \mathbb{E}_{\tau \sim \pi_\theta} \; [ \; \sum_{t=0}^T R_t(\tau) \; \nabla_\theta \ln \pi_\theta(a_t \vert s_t) \;]$
+%- end for sampled trajectory
+%- $\theta = \theta + \alpha \nabla_\theta J(\pi_\theta) $
+%3. end for all episodes 
+%
+%Implementation notes:
+%1. Code is inspired by Laura Graesser's (LG, 2020 book) implementation, however with large modifications
+%2. We use the concept of Agent (instead of 'pi' or '$policy_pi$') and a separate network class (i.e. how the function approximator is implemented, it could well be a linear regression)
+%3. **Important concept**: "Loss" in the implementation below, is the "objective" $J$. In our algorithm, we want to **maximize** it. PyTorch's optimizer, by default, MINIMIZES it (as it is called "loss"), we therefore add "-" negate it, so as to maximize it. 
+%4. Also in the final plot, notice "loss" is RISING and follows the rewards, which is expected as "loss" is really being maximized.  
+%5. self.pd.probs = prob. distribution of all actions
+%6. Sum of all possible action probabilities = 1.0
+%7. Note that episodes > 300 start showing repeated patterns. Rewards drop and rise in cylces. 300 is ideal and hence suggested in LG (2020)
+
+\section{About Stable-Baselines-3}
+\begin{itemize}
+	\item SB3- paper \citep{SB3}, \cite{SB3}
+	\item sb-3 main doc -- \citep{SB3-main-doc}
+	\item sb-3 ppo doc -- \citep{SB3-PPO-doc}
+\end{itemize}
+
+\section{Method}
+
+We normalize the tool wear and other state features, $x \in [0,\;1] \subset \mathbb{R} $. This allows for adding white noise of similar magnitudes across experiments of different data-sets
+
+\section{Results}
+%\begin{figure}[ht]
+%	\begin{subfigure}{.5\textwidth}
+%		\centering
+%		% include first image
+%		\includegraphics[width=.8\linewidth]{images\Dasic_HighNBD_Avg_episode_rewards.png}  
+%		\caption{Put your sub-caption here}
+%		\label{fig:sub-first}
+%	\end{subfigure}
+%	\begin{subfigure}{.5\textwidth}
+%		\centering
+%		% include second image
+%		\includegraphics[width=.8\linewidth]{images\Dasic_HighNBD_Avg_episode_rewards.png}  
+%		\caption{Put your sub-caption here}
+%		\label{fig:sub-second}
+%	\end{subfigure}
+%	\caption{Put your caption here}
+%	\label{fig:fig}
+%\end{figure}
+
+
+
+\section{Discussion}
+
+\section{Conclusion}
+
+
+%% References
+\bibliography{ES_bibliography}
+\end{document}

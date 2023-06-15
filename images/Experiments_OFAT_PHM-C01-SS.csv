@@ -1,0 +1,10 @@
+expt_n,environment,environment_info,data_file,R1,R2,R3,wear_threshold,threshold_factor,add_noise,breakdown_chance,episodes,milling_operations_max,version_prefix,test_info,test_cases,test_rounds,results_folder,test_file,train_sample_rate,test_sample_rate
+0,SS,PHM C01 Simple LBD,data\PHM_Tool_Wear_Data_C01_0p12.csv,1,-1,-100,0.12,1,1.00E+03,0.05,800,348,PHM_C01_SS,Separate test set.,40,5,results/Re-runs_01-June-2023,,100,70
+1,SS,PHM C01 Simple LBD,data\PHM_Tool_Wear_Data_C01_0p12.csv,1,-1,-40,0.12,1,1.00E+03,0.05,800,348,PHM_C01_SS,Separate test set.,40,5,results/Re-runs_01-June-2023,,100,70
+2,SS,PHM C01 Simple LBD,data\PHM_Tool_Wear_Data_C01_0p12.csv,1,-1,-20,0.12,1,1.00E+03,0.05,800,348,PHM_C01_SS,Separate test set.,40,5,results/Re-runs_01-June-2023,,100,70
+3,SS,PHM C01 Simple LBD,data\PHM_Tool_Wear_Data_C01_0p12.csv,1,-1,-100,0.12,0.95,1.00E+03,0.05,800,348,PHM_C01_SS,Separate test set.,40,5,results/Re-runs_01-June-2023,,100,70
+4,SS,PHM C01 Simple LBD,data\PHM_Tool_Wear_Data_C01_0p12.csv,1,-1,-40,0.12,0.95,1.00E+03,0.05,800,348,PHM_C01_SS,Separate test set.,40,5,results/Re-runs_01-June-2023,,100,70
+5,SS,PHM C01 Simple LBD,data\PHM_Tool_Wear_Data_C01_0p12.csv,1,-1,-20,0.12,0.95,1.00E+03,0.05,800,348,PHM_C01_SS,Separate test set.,40,5,results/Re-runs_01-June-2023,,100,70
+6,SS,PHM C01 Simple LBD,data\PHM_Tool_Wear_Data_C01_0p12.csv,1,-1,-100,0.12,0.9,1.00E+03,0.05,800,348,PHM_C01_SS,Separate test set.,40,5,results/Re-runs_01-June-2023,,100,70
+7,SS,PHM C01 Simple LBD,data\PHM_Tool_Wear_Data_C01_0p12.csv,1,-1,-40,0.12,0.9,1.00E+03,0.05,800,348,PHM_C01_SS,Separate test set.,40,5,results/Re-runs_01-June-2023,,100,70
+8,SS,PHM C01 Simple LBD,data\PHM_Tool_Wear_Data_C01_0p12.csv,1,-1,-20,0.12,0.9,1.00E+03,0.05,800,348,PHM_C01_SS,Separate test set.,40,5,results/Re-runs_01-June-2023,,100,70

@@ -1,0 +1,16 @@
+expt_n,environment,environment_info,data_file,R1,R2,R3,wear_threshold,threshold_factor,add_noise,breakdown_chance,episodes,milling_operations_max,version_prefix,test_info,test_cases,test_rounds,results_folder,test_file,train_sample_rate,test_sample_rate
+0,SS,Simulated Dasic 2006,data\Simulated_Dasic_2006_Tool_Wear_Model_Train.csv,1,-1,-100,3,1,0,0,800,121,Dasic,Separate test set.,40,5,results/TrainingTime,data\Simulated_Dasic_2006_Tool_Wear_Model_Test.csv,1,2
+1,SS,Simulated Dasic 2006,data\Simulated_Dasic_2006_Tool_Wear_Model_Train.csv,1,-1,-100,3,1,1000,0.05,800,121,Dasic,Separate test set.,40,5,results/TrainingTime,data\Simulated_Dasic_2006_Tool_Wear_Model_Test.csv,1,2
+2,SS,Simulated Dasic 2006,data\Simulated_Dasic_2006_Tool_Wear_Model_Train.csv,1,-1,-100,3,1,100,0.1,800,121,Dasic,Separate test set.,40,5,results/TrainingTime,data\Simulated_Dasic_2006_Tool_Wear_Model_Test.csv,1,2
+3,SS,PHM C01 Simple NBD,data\PHM_Tool_Wear_Data_C01_0p12.csv,1,-2,-40,0.12,0.95,0,0,800,348,PHM_C01_SS,Separate test set.,40,5,results/TrainingTime,,100,70
+4,SS,PHM C01 Simple LBD,data\PHM_Tool_Wear_Data_C01_0p12.csv,1,-1,-100,0.12,0.9,1000,0.05,800,348,PHM_C01_SS,Separate test set.,40,5,results/TrainingTime,,100,70
+5,SS,PHM C01 Simple HBD,data\PHM_Tool_Wear_Data_C01_0p12.csv,1,-1,-40,0.12,0.85,100,0.1,800,348,PHM_C01_SS,Separate test set.,40,5,results/TrainingTime,,100,70
+6,SS,PHM C04 Simple NBD,data\PHM_Tool_Wear_Data_C04_0p098.csv,1,-1,-40,0.098,0.97,0,0,800,348,PHM_C04_SS,Separate test set.,40,5,results/TrainingTime,,100,70
+7,SS,PHM C04 Simple LBD,data\PHM_Tool_Wear_Data_C04_0p098.csv,1,-1,-40,0.098,0.85,1000,0.05,800,348,PHM_C04_SS,Separate test set.,40,5,results/TrainingTime,,100,70
+8,SS,PHM C04 Simple HBD,data\PHM_Tool_Wear_Data_C04_0p098.csv,1,-1,-100,0.098,0.9,100,0.1,800,348,PHM_C04_SS,Separate test set.,40,5,results/TrainingTime,,100,70
+9,SS,PHM C06 Simple NBD,data\PHM_Tool_Wear_Data_C06_0p13.csv,1,-1,-40,0.13,0.95,0,0,800,348,PHM_C06_SS,Separate test set.,40,5,results/TrainingTime,,100,70
+10,SS,PHM C06 Simple LBD,data\PHM_Tool_Wear_Data_C06_0p13.csv,1,-1,-40,0.13,0.95,1000,0.05,800,348,PHM_C06_SS,Separate test set.,40,5,results/TrainingTime,,100,70
+11,SS,PHM C06 Simple HBD,data\PHM_Tool_Wear_Data_C06_0p13.csv,1,-1,-40,0.13,0.9,100,0.1,800,348,PHM_C06_SS,Separate test set.,40,5,results/TrainingTime,,100,70
+12,MS,PHM 2010. Complex multi-variate state V3.,data\PHM_Tool_Wear_Data_C04_0p098.csv,1,-1,-100,0.098,0.9,0,0,800,348,PHM_C04_MS,Separate test set.,40,5,results/TrainingTime,,100,70
+13,MS,PHM 2010. Complex multi-variate state V3.,data\PHM_Tool_Wear_Data_C04_0p098.csv,1,-1,-100,0.098,0.9,0,0,800,348,PHM_C04_MS,Separate test set.,40,5,results/TrainingTime,,100,70
+14,MS,PHM 2010. Complex multi-variate state V3.,data\PHM_Tool_Wear_Data_C04_0p098.csv,1,-1,-100,0.098,0.9,0,0,800,348,PHM_C04_MS,Separate test set.,40,5,results/TrainingTime,,100,70

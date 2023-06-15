@@ -1,0 +1,12 @@
+4_PHM_C01_SS_NT_LowNBD_
+Date,Time,Environment,Noise,Breakdown_chance,Train_data,env.R1,env.R2,env.R3,Wear threshold,Look-ahead Factor,Episodes,Terminate on,Test_info,Test_cases,Metrics_method,Version
+13-Jun-2023,15:45:06,PHM C01 simple (NT) LBD-SS,0.001,0.05,data\PHM_Tool_Wear_Data_C01_0p12.csv,1,-1,-100,0.12,0.9,800,348,Separate test set.,40,binary,4_PHM_C01_SS_NT_LowNBD_
+
+,Precision,Precision,Recall,Recall,F_Beta_0_5,F_Beta_0_5,F_Beta_0_75,F_Beta_0_75,F_1_Score,F_1_Score,Normal_error,Replace_error,Overall_error
+,mean,std,mean,std,mean,std,mean,std,mean,std,mean,mean,mean
+Algorithm,,,,,,,,,,,,,
+A2C,0.5051,0.0946,0.39,0.0652,0.4756,0.0831,0.4548,0.0765,0.4384,0.0723,0.39,0.61,0.5
+DQN,0.5,0.0,0.98,0.0274,0.5543,0.0018,0.607,0.0038,0.6621,0.0063,0.98,0.02,0.5
+PPO,0.5602,0.0205,0.78,0.0908,0.5932,0.0273,0.6227,0.0348,0.6511,0.0431,0.61,0.22,0.415
+REINFORCE,0.9594,0.0228,0.94,0.0418,0.9552,0.0217,0.952,0.0232,0.9492,0.026,0.04,0.06,0.05
+
