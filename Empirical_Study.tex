@@ -22,11 +22,13 @@
 \maketitle
 
 \begin{abstract}
-``Occam`s razor is a principle often attributed to 14th century friar William of Ockham that says that if you have two competing ideas to explain the same phenomenon, you should prefer the simpler one`` - Chris Simms (NewScientist, ). Everything should be made as simple as possible, but not simpler. -- Albert Enstien 
+The 14th-century friar, William of Ockham, has been attributed for giving us the "Occam's razor" principle -- when there are two competing "theories" predicting the same phenomenon, one should prefer the \textit{simpler} of two.
 
-Our broad goal is to understand the performance of REINFORCE, a na\"ive reinforce algorithm algorithm with pitched against the more advanced algorithms, specifically the DQN, A2C and PPO. 
+In this empirical study, we document the performance of a simple, early reinforcement learning algorithm, REINFORCE, implemented for a predictive maintenance problem. We compare a very naive implementation of REINFORCE against the predictions of industry-grade Stable-Baselines3 (SB-3) implementations of three advanced algorithms, namely, Deep Q-Network (DQN), Advantage Actor-Critic (A2C) and Proximal Policy Optimization (PPO). Our broad goal was to understand the performance under various scenarios such as a simulation-based environment, three sets of real tool-wear data, added noise levels, and a random chance of break-down. Model performance was measured by how accurately the predictive maintenance agent suggested tool replacement compared to a deterministic preventive maintenance rule based on the tool-wear threshold. 
 
-Our approach uses simulated as well as real data. Simple as well as complex env. Without as well as with noise. Our systematic analysis and study show that the na\"ive REINFORCE implementation out performs these algorithms by xx, xx, and xx respectively. The variance as measured by std. dev is xx, xx, xx
+Our findings indicate that the REINFORCE performs significantly well for this particular problem. Across variants of the environment, the REINFORCE algorithm demonstrated an average F1 performance of 0.836 against 0.383 for A2C, 0.471 for DQN, and 0.402 for PPO. As a measure of stability, the overall standard deviation for REINFORCE was 0.041, while A2C, DQN, and PPO standard deviations were 0.059, 0.029, and 0.070, respectively. Across precision on tool replacement, REINFORCE was better by 0.354 basis points than the best of advanced algorithms and demonstrated a variance lower by 0.004. While the REINFORCE demonstrated better performance for each variant, it was observed that the training was unstable, occasionally producing poor performance models. On the other hand, the SB-3 implementations training was more stable, almost always producing models with an F1 in the range 0.47-0.50.
+
+
 \end{abstract}
 
 \section{Introduction}
