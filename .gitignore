@@ -1,3 +1,5 @@
+storage/
+*/storage
 Template/
 *.aux
 *.log
