@@ -1,0 +1,12 @@
+2_Dasic_SS_NT_10K_HighNBD_
+Date,Time,Environment,Noise,Breakdown_chance,Train_data,env.R1,env.R2,env.R3,Wear threshold,Look-ahead Factor,Episodes,Terminate on,Test_info,Test_cases,Metrics_method,Version
+21-Jun-2023,10:48:14,Simulated Dasic 2006 - simple (NT) state - HBD-SS,0.01,0.1,data\Simulated_Dasic_2006_Tool_Wear_Model_Train.csv,1,-1,-100,3,1,800,121,Separate test set.,40,binary,2_Dasic_SS_NT_10K_HighNBD_
+
+,Precision,Precision,Recall,Recall,F_Beta_0_5,F_Beta_0_5,F_Beta_0_75,F_Beta_0_75,F_1_Score,F_1_Score,Normal_error,Replace_error,Overall_error
+,mean,std,mean,std,mean,std,mean,std,mean,std,mean,mean,mean
+Algorithm,,,,,,,,,,,,,
+A2C,0.5249,0.1126,0.5,0.1179,0.5185,0.1112,0.5139,0.1112,0.5103,0.1118,0.455,0.5,0.4775
+DQN,0.4987,0.0097,0.985,0.0337,0.5533,0.0114,0.6064,0.0133,0.662,0.0155,0.99,0.015,0.5025
+PPO,0.4365,0.1032,0.14,0.0568,0.3015,0.0892,0.2438,0.0808,0.2094,0.0742,0.175,0.86,0.5175
+REINFORCE,0.9031,0.0297,0.965,0.0474,0.9143,0.0237,0.9236,0.0221,0.9321,0.024,0.105,0.035,0.07
+
