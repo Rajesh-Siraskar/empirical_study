@@ -14,6 +14,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{amsfonts}
+\usepackage{textcomp}	% for \texttrademark
 \usepackage{setspace}
 \usepackage[spaces, hyphens]{url}
 \usepackage[colorlinks, allcolors=blue]{hyperref} 
@@ -35,7 +36,9 @@
 \maketitle
 
 \begin{abstract}
-The 14th-century friar, William of Ockham, has been attributed for giving us the "Occam's razor" principle -- when there are two competing "theories" predicting the same phenomenon, one should prefer the \textit{simpler} of two.
+\textit{\textcolor{red}{Such preventive solution increases not only the machine downtime but also the manufacturing cost}}
+ 
+ The 14th-century friar, William of Ockham, has been attributed for giving us the "Occam's razor" principle -- when there are two competing "theories" predicting the same phenomenon, one should prefer the \textit{simpler} of two.
 
 In this empirical study, we document the performance of a simple, early reinforcement learning algorithm, REINFORCE, implemented for a predictive maintenance problem. We compare a very naive implementation of REINFORCE against the predictions of industry-grade Stable-Baselines3 (SB-3) implementations of three advanced algorithms, namely, Deep Q-Network (DQN), Advantage Actor-Critic (A2C) and Proximal Policy Optimization (PPO). Our broad goal was to understand the performance under various scenarios such as a simulation-based environment, three sets of real tool-wear data, added noise levels, and a random chance of break-down. Model performance was measured by how accurately the predictive maintenance agent suggested tool replacement compared to a deterministic preventive maintenance rule based on the tool-wear threshold. 
 
@@ -43,6 +46,20 @@ Our findings indicate that the REINFORCE performs significantly well for this pa
 
 
 \end{abstract}
+
+\section{LR}
+Literature search conducted on the Scopus\texttrademark{} and Web Of Science\texttrademark{} did not return any articles for the application of reinforcement learning for predictive maintenance of milling machines. Search strings we tried -- \texttt{``reinforcement learning AND tool wear AND maintenance", RL + milling + policy, RL + milling + maintenance, RL + tool wear + policy, RL + tool wear + maintenance"} 
+
+Machine learning methods have been applied for example --
+\cite{oshida2023} proposes real-time tool wear detection during the milling process. They use a stacked LSTM encoder-decoder model for anomaly detection.
+
+
+No results for "reinforcement learning" AND "milling machine" AND "tool wear" - on scopus or wos as of 23-jun-2023
+"reinforcement learning" AND "milling machine" - 1 not relevant "	
+\textit{Conference Paper}  •  Open access "Online Learning of Stability Lobe Diagrams in Milling" 	
+Friedrich, J. Torzewski, J.  Verl, A.
+
+"reinforcement learning" AND "tool wear" - 10 results
 
 
 \section{Method and Inference}
@@ -267,6 +284,42 @@ except for the optimizer and learning rate that were taken from Stable Baselines
 	\caption{Model performance summary - averaged over PHM-2010 environments with complex multi-variate environment.}
 	\label{tbl:PHMMS}
 \end{table*}
+
+\section{training times}
+
+\begin{table*}[hbt!]\centering
+	\sffamily
+	\rowspace{1.3}
+	\begin{tabular}{@{}l r r r r@{}}
+		\arrayrulecolor{black!40}\toprule
+		\textbf{Environment} &\textbf{REINFORCE} &\textbf{A2C}&\textbf{DQN}&\textbf{PPO}\\ \midrule
+		Simulated  - No noise &214.23 &41.19&4.03&41.13\\
+		Simulated  - Low noise &199.89 &41.52&3.55&40.66\\
+		Simulated  - High noise &134.16 &17.88&1.53&20.90\\ \midrule
+		
+		PHM C01 SS - No noise &330.54 &18.85&2.08&32.65\\
+		PHM C01 SS - Low noise &426.79 &30.66&3.69&38.59\\
+		PHM C01 SS - High noise &333.13 &17.58&1.80&19.16\\ \midrule
+		
+		PHM C04 SS - No noise &299.31 &19.56&1.86&19.64\\
+		PHM C04 SS - Low noise &264.90 &18.27&2.00&19.69\\
+		PHM C04 SS - High noise &256.44 &17.65&1.58&19.11\\ \hdashline
+		
+		PHM C06 SS - No noise &339.65 &17.64&2.26&19.50\\
+		PHM C06 SS - Low noise &266.98 &19.33&1.84&19.19\\
+		PHM C06 SS - High noise &308.20 &34.21&4.18&30.94\\ \hdashline
+		
+		PHM C01 MS - No noise &655.21 &38.55&4.96&42.21\\
+		PHM C04 MS - No noise &615.58 &33.85&7.36&43.49\\
+		PHM C06 MS - No noise &625.37 &39.30&5.85&41.68\\  \midrule
+		
+		Overall average (s) &351.36 &27.07&3.24&29.90\\
+		\bottomrule
+\end{tabular}
+\caption{Training time for each model, across different environments. Averaged over 3 runs. Time is in seconds (s).}
+\label{tbl:TrainingTimes}
+\end{table*}
+
 
 
 \section{Stable Baseline algorithms - default architectures}
