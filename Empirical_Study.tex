@@ -26,7 +26,7 @@
 \newcommand{\rowspace}[1]{\renewcommand{\arraystretch}{#1}}
 
 %opening
-\title{An empirical study of the na\"ive REINFORCE algorithm for predictive maintenance of industrial machines}
+\title{An empirical study of the na\"ive REINFORCE algorithm for predictive maintenance of industrial milling machines}
 \author{Rajesh Siraskar}
 
 \onehalfspacing
@@ -36,6 +36,8 @@
 \maketitle
 
 \begin{abstract}
+	
+
 \textit{\textcolor{red}{Such preventive solution increases not only the machine downtime but also the manufacturing cost}}
  
  The 14th-century friar, William of Ockham, has been attributed for giving us the "Occam's razor" principle -- when there are two competing "theories" predicting the same phenomenon, one should prefer the \textit{simpler} of two.
@@ -47,11 +49,19 @@ Our findings indicate that the REINFORCE performs significantly well for this pa
 
 \end{abstract}
 
-\section{LR}
+\section{Introduction}
+
+Milling machines are highly versatile, ubiquitous tools serving a variety of industries. A milling machine removes metal from the workpiece by rotating and driving a cutting device into it. Abrasive forces cause tool wear, and optimal tool replacement reduces direct costs and optimizes the machines' downtime. With the 2023 milling machine market valued at USD 68.3 billion \citep{milling-market}, this is an important goal for the industry.
+
+
 Literature search conducted on the Scopus\texttrademark{} and Web Of Science\texttrademark{} did not return any articles for the application of reinforcement learning for predictive maintenance of milling machines. Search strings we tried -- \texttt{``reinforcement learning AND tool wear AND maintenance", RL + milling + policy, RL + milling + maintenance, RL + tool wear + policy, RL + tool wear + maintenance"} 
 
+Running the search \texttt{``reinforcement learning AND milling AND tool wear"} using the Scopus\texttrademark{} and Web Of Science\texttrademark{} services 
+
+\cite{dai2021reinforcement} is 
+
 Machine learning methods have been applied for example --
-\cite{oshida2023} proposes real-time tool wear detection during the milling process. They use a stacked LSTM encoder-decoder model for anomaly detection.
+\cite{oshida2023development} proposes real-time tool wear detection during the milling process. They use a stacked LSTM encoder-decoder model for anomaly detection.
 
 
 No results for "reinforcement learning" AND "milling machine" AND "tool wear" - on scopus or wos as of 23-jun-2023
