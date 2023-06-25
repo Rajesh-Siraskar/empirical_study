@@ -2,6 +2,7 @@
 
 \documentclass[]{article}
 \usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage[round]{natbib}
 \bibliographystyle{plainnat}
 
@@ -36,29 +37,43 @@
 \maketitle
 
 \begin{abstract}
-	
+In this empirical study, we document the performance of a simple, early reinforcement learning algorithm, REINFORCE, implemented for a predictive maintenance problem -- an optimal tool replacement policy for a milling machine. We compare a na\"ive implementation of REINFORCE against the predictions of industry-grade Stable-Baselines3 (SB-3) implementations of three advanced algorithms, namely, Deep Q-Network (DQN), Advantage Actor-Critic (A2C) and Proximal Policy Optimization (PPO). Our broad goal was to understand the performance under various scenarios such as a simulation-based environment and three sets of real tool-wear data (the IEEE NUAA Ideahouse dataset). We increase the difficulty level by adding noise levels and a random chance of break-down. Model performance was measured by how accurately the predictive maintenance agent suggested tool replacement when compared to a deterministic preventive maintenance rule based on the tool-wear threshold. 
 
-\textit{\textcolor{red}{Such preventive solution increases not only the machine downtime but also the manufacturing cost}}
- 
- The 14th-century friar, William of Ockham, has been attributed for giving us the "Occam's razor" principle -- when there are two competing "theories" predicting the same phenomenon, one should prefer the \textit{simpler} of two.
-
-In this empirical study, we document the performance of a simple, early reinforcement learning algorithm, REINFORCE, implemented for a predictive maintenance problem. We compare a very naive implementation of REINFORCE against the predictions of industry-grade Stable-Baselines3 (SB-3) implementations of three advanced algorithms, namely, Deep Q-Network (DQN), Advantage Actor-Critic (A2C) and Proximal Policy Optimization (PPO). Our broad goal was to understand the performance under various scenarios such as a simulation-based environment, three sets of real tool-wear data, added noise levels, and a random chance of break-down. Model performance was measured by how accurately the predictive maintenance agent suggested tool replacement compared to a deterministic preventive maintenance rule based on the tool-wear threshold. 
-
-Our findings indicate that the REINFORCE performs significantly well for this particular problem. Across variants of the environment, the REINFORCE algorithm demonstrated an average F1 performance of 0.836 against 0.383 for A2C, 0.471 for DQN, and 0.402 for PPO. As a measure of stability, the overall standard deviation for REINFORCE was 0.041, while A2C, DQN, and PPO standard deviations were 0.059, 0.029, and 0.070, respectively. Across precision on tool replacement, REINFORCE was better by 0.354 basis points than the best of advanced algorithms and demonstrated a variance lower by 0.004. While the REINFORCE demonstrated better performance for each variant, it was observed that the training was unstable, occasionally producing poor performance models. On the other hand, the SB-3 implementations training was more stable, almost always producing models with an F1 in the range 0.47-0.50.
-
-
+Our findings indicate that the REINFORCE performs significantly well for this particular problem. Across variants of the environment, the simple na\"ive implementation of REINFORCE demonstrated an incredibly high tool replacement precision of 0.866 against 0.448 for A2C, 0.415 for DQN, and 0.447 for PPO. The recall, F1-score and F1-beta (0.5) scores were all significantly higher as well. While the REINFORCE demonstrated better performance for each variant, it was observed that the training was unstable, occasionally producing poor performance models. On the other hand, the SB-3 implementations training was more stable, almost always producing significantly low performing models.
 \end{abstract}
 
 \section{Introduction}
 
-Milling machines are highly versatile, ubiquitous tools serving a variety of industries. A milling machine removes metal from the workpiece by rotating and driving a cutting device into it. Abrasive forces cause tool wear, and optimal tool replacement reduces direct costs and optimizes the machines' downtime. With the 2023 milling machine market valued at USD 68.3 billion \citep{milling-market}, this is an important goal for the industry.
+Milling machines are highly versatile, ubiquitous tools serving a variety of industries. A milling machine removes metal from the work piece by rotating and driving a cutting device into it. Abrasive forces cause tool wear, and optimal tool replacement reduces direct costs and optimizes the machines' downtime. With the 2023 milling machine market valued at USD 68.3 billion \citep{milling-market}, this is an important goal for the industry.
+
+The cutting tool experiences multiple types of wear as it cuts through metal. Tool wear depends in several factors such as the cutting speed, force applied to the tool, lubrication and materials of the work piece and cutting tool. Tool wear is 
+
+IEEE NUAA Ideahouse dataset has been used in this paper for the RUL estimation of the milling cutter. \cite{NUAA-data-set}
+
+
+The 14th-century friar, William of Ockham, has been attributed for giving us the "Occam's razor" principle -- when there are two competing "theories" predicting the same phenomenon, one should prefer the \textit{simpler} of two.
+
+\textit{\textcolor{red}{Such preventive solution increases not only the machine downtime but also the manufacturing cost}}
+
+applications, tool wear has proved difficult to
+understand and predict. However, most tool wear can
+be described by a few mechanisms, which include:
+abrasion, adhesion, chemical reaction, plastic deformation
+and fracture. These mechanisms produce wear
+scars that are referred to as flank wear, crater wear,
+notch wear and edge chipping as illustrated in figure 1
+[25]. S
+
+Reinforcement learning (RL) is an autonomous learning artifical intelligence technique.
+
+Tool wear modeling is the first step to assist in predicting 
 
 
 Literature search conducted on the Scopus\texttrademark{} and Web Of Science\texttrademark{} did not return any articles for the application of reinforcement learning for predictive maintenance of milling machines. Search strings we tried -- \texttt{``reinforcement learning AND tool wear AND maintenance", RL + milling + policy, RL + milling + maintenance, RL + tool wear + policy, RL + tool wear + maintenance"} 
 
 Running the search \texttt{``reinforcement learning AND milling AND tool wear"} using the Scopus\texttrademark{} and Web Of Science\texttrademark{} services 
 
-\cite{dai2021reinforcement} is 
+\cite{dai2021reinforcement} is the only article we found that tackles the 
 
 Machine learning methods have been applied for example --
 \cite{oshida2023development} proposes real-time tool wear detection during the milling process. They use a stacked LSTM encoder-decoder model for anomaly detection.
