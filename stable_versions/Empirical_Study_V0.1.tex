@@ -1,5 +1,6 @@
 %% (2) Build options: PdfLaTex + BibTex
-\documentclass[a4paper, 12pt]{article}
+
+\documentclass[]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[round]{natbib}
@@ -13,6 +14,7 @@
 
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{hyperref}
 \usepackage{amsfonts}
 \usepackage{textcomp}	% for \texttrademark
 \usepackage{setspace}
@@ -24,17 +26,7 @@
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcommand{\rowspace}[1]{\renewcommand{\arraystretch}{#1}}
-\renewenvironment{abstract}
-{\small
-	\begin{center}
-		\bfseries \abstractname\vspace{-.5em}\vspace{0pt}
-	\end{center}
-	\list{}{
-		\setlength{\leftmargin}{.25cm}%
-		\setlength{\rightmargin}{\leftmargin}%
-	}%
-	\item\relax}
-{\endlist}
+
 %opening
 \title{An empirical study of the na\"ive REINFORCE algorithm for predictive maintenance of industrial milling machines}
 \author{Rajesh Siraskar}
@@ -42,43 +34,32 @@
 \onehalfspacing
 
 \begin{document}
+
 \maketitle
 
 \begin{abstract}
 In this empirical study, we document the performance of a simple, early reinforcement learning algorithm, REINFORCE, implemented for a predictive maintenance problem -- an optimal tool replacement policy for a milling machine. We compare a na\"ive implementation of REINFORCE against the predictions of industry-grade Stable-Baselines3 (SB-3) implementations of three advanced algorithms, namely, Deep Q-Network (DQN), Advantage Actor-Critic (A2C) and Proximal Policy Optimization (PPO). This work is aimed at industrial practitioners not accustomed to the complex hyperparameter tuning often required to get reinforcement learning algorithms to work. Our broad goal was to understand the performance of \textit{untuned} algorithms under various scenarios such (1) simulation-based environment (2) three sets of real tool-wear data (the benchmark IEEE NUAA Ideahouse dataset) (3) increased difficulty level by adding noise levels and a random chance of break-down. 
 
-Model performance was measured by how accurately the predictive maintenance agent suggested tool replacement when compared to a deterministic preventive maintenance rule based on the tool-wear threshold. Across variants of the environment, \textit{selected} REINFORCE models demonstrated an incredibly high tool replacement precision of 0.866 against 0.448 for A2C, 0.415 for DQN, and 0.447 for PPO. The recall, F1-score, and F1-beta (0.5) scores were all significantly higher as well. While the selected REINFORCE models demonstrated better performance for each variant, it was observed that the training was unstable, occasionally producing poor performance models (these were discarded). On the other hand, the SB-3 implementations training was more stable, almost always producing significantly low performing models. Our findings indicate that the REINFORCE performs significantly well for this particular problem. Consequently, for this particular problem, selecting the na\"ive REINFORCE could be a more suitable and effective policy generating alternative to more advanced complex algorithms. 
+Model performance was measured by how accurately the predictive maintenance agent suggested tool replacement when compared to a deterministic preventive maintenance rule based on the tool-wear threshold. Across variants of the environment, the simple na\"ive implementation of REINFORCE demonstrated an incredibly high tool replacement precision of 0.866 against 0.448 for A2C, 0.415 for DQN, and 0.447 for PPO. The recall, F1-score, and F1-beta (0.5) scores were all significantly higher as well. While the selected REINFORCE models demonstrated better performance for each variant, it was observed that the training was unstable, occasionally producing poor performance models (these were discarded). On the other hand, the SB-3 implementations training was more stable, almost always producing significantly low performing models. Our findings indicate that the REINFORCE performs significantly well for this particular problem. Consequently, for this particular problem, selecting the na\"ive REINFORCE could be a more suitable and effective policy generating alternative to more advanced complex algorithms. 
 
-For reproducibility, model training and testing code, data and the \textit{selected} REINFORCE models have been uploaded to \href{https://github.com/Rajesh-Siraskar/Empirical-Study\_REINFORCE-for-predictive-maintenance}{https://github.com/Link} 
+Code (traning and testing), data and selected REINFORCE models have been uploaded to \href{https://github.com/Rajesh-Siraskar/empirical_study}{https://github.com/Rajesh-Siraskar/empirical_study} 
+
 \end{abstract}
 
-\noindent \textbf{Keywords}: Predictive maintenance, milling machines, Reinforcement Learning, REINFORCE
-
-\subsection*{Abbreviations}
-
-\begin{table*}[!htbp]\centering
-	\sffamily
-	\rowspace{1.3}
-	\begin{tabular}{L{1cm} L{4.5cm} L{1cm} L{4.5cm}}
-		\arrayrulecolor{black!40}\toprule	
-		
-		DQN & Deep Q-Network & A2C & Advantage Actor-Critic\\
-		PPO & Proximal Policy Optimization & & \\
-		SS & Single-variable state & MS & Multi-variate state\\
-		TP &True positive &TN &True negative\\
-		FP &False positive &FN &False negative\\
-		RL & Reinforcement Learning & SB-3 & Stable-Baselines3\\
-
-		\bottomrule
-	\end{tabular}
-	\label{tbl:abbrev}
-\end{table*}
-
-\newpage
 \section{TOC}
-
+Approx 14 pgs
+0. Abstract\\
+0. Abbreviations\\
+Abbreviations
+ANN Artificial neural network
+FN False negative
+FP False positive
+MLP Multilayer perceptron
+TN True negative
+TP True positive\\
 1. Introduction - including previous work? End by "The rest of the paper is designed in the following style."\\
 2. The REINFORCE algo.\\
+
 3. Data Description and Evaluation Metrics.\\
  -- Table 1 The general characteristics of the selected benchmarks\\
  -- \\
@@ -136,26 +117,10 @@ Friedrich, J. Torzewski, J.  Verl, A.
 "reinforcement learning" AND "tool wear" - 10 results
 
 
-\section{Literature Review}
-
-\section{Method}
-
-\textit{The methodology explains in detail what the researcher did to undertake the research. Various aspects of the research have to be outlined: The overall structure and operation of the experiment or observational experience. The groups studied in the research including the size of each group and any features of the subjects which may be relevant to the topic being researched. The variables that were changed between groups and the variables measured as a result of the changes. The conditions under which the research was undertaken and any factors or variations in conditions which may have an impact on the results. The methods of data analysis used in order to analyse and collate the results. \textcolor{red}{***}Any limitations of the data collected.}
-We normalize the tool wear and other state features, $x \in [0,\;1] \subset \mathbb{R} $. This allows for adding white noise of similar magnitudes across experiments of different data-sets
-\subsection{RL environment description}
-\subsection{Data description}
-\subsection{Procedure}
- -- training \\
- -- selecting the model\\
- -- conducting the experiments\\
- 
-\subsection{Evaluation method}
-\subsection{Tools}
-2 different laptops
-
+\section{Method and Inference}
 \begin{itemize}
 	\item why classifction metrics
-	\item why F1beta	
+	\item why F1beta
 \end{itemize}
 
 \subsection{Method - training and testing}
@@ -254,28 +219,7 @@ except for the optimizer and learning rate that were taken from Stable Baselines
 
 
 
-
 \section{Results}
-%\begin{figure}[ht]
-%	\begin{subfigure}{.5\textwidth}
-	%		\centering
-	%		% include first image
-	%		\includegraphics[width=.8\linewidth]{images\Dasic_HighNBD_Avg_episode_rewards.png}  
-	%		\caption{Put your sub-caption here}
-	%		\label{fig:sub-first}
-	%	\end{subfigure}
-%	\begin{subfigure}{.5\textwidth}
-	%		\centering
-	%		% include second image
-	%		\includegraphics[width=.8\linewidth]{images\Dasic_HighNBD_Avg_episode_rewards.png}  
-	%		\caption{Put your sub-caption here}
-	%		\label{fig:sub-second}
-	%	\end{subfigure}
-%	\caption{Put your caption here}
-%	\label{fig:fig}
-%\end{figure}
-
-
 \subsection{Detailed metrics}
 \newgeometry{margin=2cm} % Change margins for landscape table
 \begin{landscape}\centering
@@ -539,9 +483,33 @@ Algorithm
 	\item sb-3 ppo doc -- \citep{SB3-PPO-doc}
 \end{itemize}
 
-\section{Discussion}
-limitiongs of the slecting model for evaluation
+\section{Method}
 
+We normalize the tool wear and other state features, $x \in [0,\;1] \subset \mathbb{R} $. This allows for adding white noise of similar magnitudes across experiments of different data-sets
+
+\section{Results}
+%\begin{figure}[ht]
+%	\begin{subfigure}{.5\textwidth}
+%		\centering
+%		% include first image
+%		\includegraphics[width=.8\linewidth]{images\Dasic_HighNBD_Avg_episode_rewards.png}  
+%		\caption{Put your sub-caption here}
+%		\label{fig:sub-first}
+%	\end{subfigure}
+%	\begin{subfigure}{.5\textwidth}
+%		\centering
+%		% include second image
+%		\includegraphics[width=.8\linewidth]{images\Dasic_HighNBD_Avg_episode_rewards.png}  
+%		\caption{Put your sub-caption here}
+%		\label{fig:sub-second}
+%	\end{subfigure}
+%	\caption{Put your caption here}
+%	\label{fig:fig}
+%\end{figure}
+
+
+
+\section{Discussion}
 
 \section{Conclusion}
 
